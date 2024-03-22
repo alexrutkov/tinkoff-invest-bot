@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: tinkoff-bot-api
+
+app:
+  sandbox:
+    token: ${TINKOFF_SANDBOX_TOKEN}
