@@ -2,6 +2,14 @@ spring:
   application:
     name: tinkoff-bot-api
 
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog.master.xml
+    user: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL}
+
 app:
   sandbox:
-    token: ${TINKOFF_SANDBOX_TOKEN}
+    token: ${TINKOFF_TOKEN}
+  account:
+    id: ${TINKOFF_ACCOUNT_ID}

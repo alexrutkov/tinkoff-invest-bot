@@ -1,0 +1,31 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_operation_trades" author="alur">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="operation_trades"/>
+            </not>
+        </preConditions>
+        <createTable tableName="operation_trades">
+            <column name="operation_id" type="uuid">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="trade_id" type="uuid">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="details" type="jsonb">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_operation_trades_operations"
+                                 baseTableName="operation_trades" baseColumnNames="operation_id"
+                                 referencedTableName="operations" referencedColumnNames="id"
+        />
+        <addForeignKeyConstraint constraintName="fk_operation_trades_trades"
+                                 baseTableName="operation_trades" baseColumnNames="trade_id"
+                                 referencedTableName="trade_orders" referencedColumnNames="trade_id"
+        />
+    </changeSet>
+</databaseChangeLog>

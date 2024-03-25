@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_strategy_orders" author="alur">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="strategy_orders"/>
+            </not>
+        </preConditions>
+        <createTable tableName="strategy_orders">
+            <column name="order_id" type="uuid">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="strategy_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="details" type="jsonb">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_strategy_orders_account_strategies"
+                                 baseTableName="strategy_orders" baseColumnNames="strategy_id"
+                                 referencedTableName="account_strategies" referencedColumnNames="id"
+        />
+    </changeSet>
+</databaseChangeLog>

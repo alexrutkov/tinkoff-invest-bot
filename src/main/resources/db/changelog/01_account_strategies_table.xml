@@ -1,0 +1,38 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="create_account_strategies" author="alur">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="account_strategies"/>
+            </not>
+        </preConditions>
+        <sql>
+            create type strategy as enum ('SMA');
+        </sql>
+        <createTable tableName="account_strategies">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="account_id" type="uuid">
+                <constraints nullable="false" />
+            </column>
+            <column name="instrument_id" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="strategy" type="strategy">
+                <constraints nullable="false" />
+            </column>
+            <column name="details" type="jsonb">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="timestamptz" defaultValueComputed="now()">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated_at" type="timestamptz" defaultValueComputed="now()">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
