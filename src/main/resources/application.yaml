@@ -7,9 +7,14 @@ spring:
     user: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
     url: ${SPRING_DATASOURCE_URL}
-
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
 app:
   sandbox:
     token: ${TINKOFF_TOKEN}
   account:
     id: ${TINKOFF_ACCOUNT_ID}
+
+server:
+  port: 9999

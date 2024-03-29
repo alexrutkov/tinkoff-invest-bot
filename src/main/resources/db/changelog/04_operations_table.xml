@@ -9,11 +9,14 @@
             </not>
         </preConditions>
         <createTable tableName="operations">
-            <column name="id" type="uuid">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="details" type="jsonb">
+            <column name="buy_order_details" type="jsonb">
                 <constraints nullable="false" />
+            </column>
+            <column name="sell_order_details" type="jsonb">
+                <constraints nullable="true" />
             </column>
         </createTable>
     </changeSet>

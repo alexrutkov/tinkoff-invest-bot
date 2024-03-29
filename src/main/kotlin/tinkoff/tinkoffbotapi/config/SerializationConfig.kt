@@ -9,4 +9,7 @@ class SerializationConfig {
 
 	@Bean
 	fun protobufToJsonMapper(): JsonFormat.Printer = JsonFormat.printer()
+
+	@Bean
+	fun jsonToProtobufMapper(): JsonFormat.Parser = JsonFormat.parser().ignoringUnknownFields()
 }

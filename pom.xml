@@ -19,6 +19,7 @@
 
         <kotlin-logging.version>3.0.5</kotlin-logging.version>
         <tinkoff.version>1.19</tinkoff.version>
+        <caffeine.version>3.1.8</caffeine.version>
         <google-protobuf.version>3.25.3</google-protobuf.version>
     </properties>
     <dependencyManagement>
@@ -44,6 +45,11 @@
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java-util</artifactId>
                 <version>${google-protobuf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -84,6 +90,10 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java-util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
         </dependency>
 
         <!-- Database -->

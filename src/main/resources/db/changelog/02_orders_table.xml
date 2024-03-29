@@ -18,6 +18,9 @@
             <column name="details" type="jsonb">
                 <constraints nullable="false" />
             </column>
+            <column name="state" type="jsonb">
+                <constraints nullable="false" />
+            </column>
         </createTable>
         <addForeignKeyConstraint constraintName="fk_strategy_orders_account_strategies"
                                  baseTableName="strategy_orders" baseColumnNames="strategy_id"

@@ -6,9 +6,10 @@
 
     <include file="01_account_strategies_table.xml" relativeToChangelogFile="true"/>
     <include file="02_orders_table.xml" relativeToChangelogFile="true"/>
-    <include file="03_trade_orders_table.xml" relativeToChangelogFile="true"/>
     <include file="04_operations_table.xml" relativeToChangelogFile="true"/>
     <include file="05_operation_trades_table.xml" relativeToChangelogFile="true"/>
 
-
+    <changeSet id="add_account_strategies_unique_constraint" author="alur">
+        <addUniqueConstraint tableName="account_strategies" columnNames="account_id, instrument_id, type"/>
+    </changeSet>
 </databaseChangeLog>

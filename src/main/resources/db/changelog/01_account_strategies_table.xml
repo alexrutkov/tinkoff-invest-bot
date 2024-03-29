@@ -9,7 +9,7 @@
             </not>
         </preConditions>
         <sql>
-            create type strategy as enum ('SMA');
+            create type strategy_type as enum ('SMA');
         </sql>
         <createTable tableName="account_strategies">
             <column name="id" type="bigint" autoIncrement="true">
@@ -21,7 +21,7 @@
             <column name="instrument_id" type="uuid">
                 <constraints nullable="false"/>
             </column>
-            <column name="strategy" type="strategy">
+            <column name="type" type="strategy_type">
                 <constraints nullable="false" />
             </column>
             <column name="details" type="jsonb">
